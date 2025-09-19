@@ -1,7 +1,7 @@
-import { HomePage } from "./pages/HomePage";
+import { HomePage } from "./pages/home/HomePage";
 import { Routes, Route } from "react-router";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
-import { OrdersPage } from "./pages/OrdersPage";
+import { OrdersPage } from "./pages/orders/OrdersPage";
 import { TrackingPage } from "./pages/TrackingPage";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ function App() {
         <Routes>
             <Route index element={<HomePage cart={cart} />} />
             <Route path='checkout' element={<CheckoutPage cart={cart} />} />
-            <Route path='orders' element={<OrdersPage />} />
+            <Route path='orders' element={<OrdersPage cart={cart} />} />
             <Route path='tracking' element={<TrackingPage />} />
             <Route
                 path='*'
