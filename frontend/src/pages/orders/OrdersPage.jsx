@@ -1,15 +1,20 @@
 import axios from "axios";
+import dayjs from "dayjs";
 import { formatMoney } from "../../utils/money";
 import { useState, useEffect, Fragment } from "react";
 import { Header } from "../../components/Header";
-import dayjs from "dayjs";
 import "./OrdersPage.css";
 
 export function OrdersPage({ cart }) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/orders?expand=products").then((response) => setOrders(response.data));
+        const fetchOrdersData = async () => {
+            const response = await axios.get("/api/orders?expand=products");
+            setOrders(response.data);
+        };
+
+        fetchOrdersData();
     }, []);
 
     return (
@@ -47,7 +52,7 @@ export function OrdersPage({ cart }) {
                                 <div className='order-details-grid'>
                                     {order.products.map((orderProduct) => {
                                         return (
-                                            <Fragment>
+                                            <Fragment key={orderProduct.product.id}>
                                                 <div className='product-image-container'>
                                                     <img src={orderProduct.product.image} />
                                                 </div>
