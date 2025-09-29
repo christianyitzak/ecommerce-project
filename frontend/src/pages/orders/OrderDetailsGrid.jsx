@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { Link } from "react-router";
 import { Fragment } from "react";
 
 export function OrderDetailsGrid({ order }) {
@@ -27,11 +28,11 @@ export function OrderDetailsGrid({ order }) {
                         </div>
 
                         <div className='product-actions'>
-                            <a href='/tracking'>
+                            <Link to={`/tracking/${order.id}/${orderProduct.product.id}`}>
                                 <button className='track-package-button button-secondary'>
                                     Track package
                                 </button>
-                            </a>
+                            </Link>
                         </div>
                     </Fragment>
                 );
