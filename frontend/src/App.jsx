@@ -9,6 +9,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 
 function App() {
     const [cart, setCart] = useState([]);
+
     const loadCart = async () => {
         const response = await axios.get("api/cart-items?expand=product");
         setCart(response.data);
