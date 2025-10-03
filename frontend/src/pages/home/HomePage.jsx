@@ -14,7 +14,7 @@ export function HomePage({ cart, loadCart }) {
         const fetchHomeData = async () => {
             const response = search
                 ? await axios.get(`/api/products?search=${search}`)
-                : await axios.get("api/products");
+                : await axios.get("/api/products");
             setProducts(response.data);
         };
 
